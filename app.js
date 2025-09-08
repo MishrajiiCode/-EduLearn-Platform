@@ -27,7 +27,7 @@ class AdvancedEduLearnApp {
                         "id": 1,
                         "title": "Variables & Data Types | Lecture 1",
                         "duration": "1:22:18",
-                        "video_url": "python/1.py.mp4",
+                        "video_url": "https://www.youtube.com/watch?v=t2_Q2BRzeEE&list=PLGjplNEQ1it8-0CmoljS5yeV-GlKSUEt0",
                         "description": "Overview of Python programming language and its applications",
                         "resources": ["Python installation guide", "Code examples"]
                     },
@@ -35,7 +35,7 @@ class AdvancedEduLearnApp {
                         "id": 2,
                         "title": "Lecture 2 : Strings & Conditional Statements ",
                         "duration": "55:40",
-                        "video_url": "python/2.py.mp4",
+                        "video_url": "https://www.youtube.com/watch?v=lIId8IDP6TU&list=PLGjplNEQ1it8-0CmoljS5yeV-GlKSUEt0",
                         "description": "Learn about different data types in Python",
                         "resources": ["Data types cheat sheet", "Practice exercises"]
                     },
@@ -43,7 +43,7 @@ class AdvancedEduLearnApp {
                         "id": 3,
                         "title": "Lecture 3 : List & Tuple in Python",
                         "duration": "41:45",
-                        "video_url": "python/3.py.mp4",
+                        "video_url": "https://www.youtube.com/watch?v=qVyvmzFxF_o&list=PLGjplNEQ1it8-0CmoljS5yeV-GlKSUEt0",
                         "description": "If statements, loops, and conditional logic",
                         "resources": ["Flow chart examples", "Coding challenges"]
                     },
@@ -51,7 +51,7 @@ class AdvancedEduLearnApp {
                         "id": 4,
                         "title": "Lecture 4 : Dictionary & Set in Python ",
                         "duration": "54:31",
-                        "video_url": "python/4.py.mp4",
+                        "video_url": "https://www.youtube.com/watch?v=078tYSD7K8E&list=PLGjplNEQ1it8-0CmoljS5yeV-GlKSUEt0",
                         "description": "Creating reusable code with functions",
                         "resources": ["Function examples", "Module documentation"]
                     },
@@ -59,7 +59,7 @@ class AdvancedEduLearnApp {
                         "id": 5,
                         "title": "Lecture 5 : Loops in Python | While & For Loops ",
                         "duration": "1:03:50",
-                        "video_url": "python/5.py.mp4",
+                        "video_url": "https://www.youtube.com/watch?v=S73thl0AyFU&list=PLGjplNEQ1it8-0CmoljS5yeV-GlKSUEt0",
                         "description": "Creating reusable code with functions",
                         "resources": ["Function examples", "Module documentation"]
                     },
@@ -67,7 +67,7 @@ class AdvancedEduLearnApp {
                         "id": 6,
                         "title": "Lecture 6 : Functions & Recursion in Python ",
                         "duration": "01:01:48",
-                        "video_url": "python/6.py.mp4",
+                        "video_url": "https://www.youtube.com/watch?v=OvTH-7ESoRA&list=PLGjplNEQ1it8-0CmoljS5yeV-GlKSUEt0",
                         "description": "Creating reusable code with functions",
                         "resources": ["Function examples", "Module documentation"]
                     },
@@ -75,7 +75,7 @@ class AdvancedEduLearnApp {
                         "id": 7,
                         "title": "Lecture 7 : File Input/Output",
                         "duration": "50:47",
-                        "video_url": "python/7.py.mp4",
+                        "video_url": "https://www.youtube.com/watch?v=jU0cndZziO0&list=PLGjplNEQ1it8-0CmoljS5yeV-GlKSUEt0",
                         "description": "Creating reusable code with functions",
                         "resources": ["Function examples", "Module documentation"]
                     },
@@ -83,7 +83,7 @@ class AdvancedEduLearnApp {
                         "id": 8,
                         "title": "Lecture 8 : OOPS in Python | Object Oriented Programming | Classes & Objects ",
                         "duration": "56:39",
-                        "video_url": "python/8.py.mp4",
+                        "video_url": "https://www.youtube.com/watch?v=HeW-D6KpDwY&list=PLGjplNEQ1it8-0CmoljS5yeV-GlKSUEt0",
                         "description": "Creating reusable code with functions",
                         "resources": ["Function examples", "Module documentation"]
                     },
@@ -91,7 +91,7 @@ class AdvancedEduLearnApp {
                         "id": 9,
                         "title": "Lecture 9 : OOPS Part 2 | Object Oriented Programming",
                         "duration": "01:09:05",
-                        "video_url": "python/9.py.mp4",
+                        "video_url": "https://www.youtube.com/watch?v=bAwmZVJeO5s&list=PLGjplNEQ1it8-0CmoljS5yeV-GlKSUEt0",
                         "description": "Creating reusable code with functions",
                         "resources": ["Function examples", "Module documentation"]
                     }
