@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduLearn Platform - Advanced Learning Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Welcome Modal -->
+    <div class="modal hidden" id="welcome-modal">
+        <div class="modal-content">
+            <div class="welcome-header">
+                <h2>Welcome to EduLearn Platform!</h2>
+                <p>Please enter your details to get started</p>
+            </div>
+            <form id="welcome-form">
+                <div class="form-group">
+                    <label class="form-label">Your Name *</label>
+                    <input type="text" class="form-control" id="user-name-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="user-email-input" placeholder="your.email@example.com">
+                </div>
+                <button type="submit" class="btn btn--primary btn--full-width">Start Learning</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Mode Toggle -->
+    <div class="admin-toggle hidden" id="admin-toggle">
+        <button class="btn btn--secondary btn--sm" id="toggle-admin-mode">
+            <span id="admin-mode-text">Enable Admin Mode</span>
+        </button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h2>📚 EduLearn Platform</h2>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link active" data-section="home">Home</a>
+                <a href="#courses" class="nav-link" data-section="courses">Courses</a>
+                <a href="#quizzes" class="nav-link" data-section="quizzes">Quizzes</a>
+                <a href="#progress" class="nav-link" data-section="progress">Progress</a>
+                <a href="#profile" class="nav-link" data-section="profile">Profile</a>
+                <a href="#admin" class="nav-link admin-only hidden" data-section="admin">Admin</a>
+            </div>
+            <div class="user-info" id="user-info">
+                <div class="user-avatar" id="user-avatar">👤</div>
+                <div class="user-details">
+                    <div class="user-name" id="nav-user-name">Student</div>
+                    <div class="user-stats" id="user-stats">0 courses enrolled</div>
+                </div>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <!-- Hero Section -->
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Learn Anything, Anywhere, Anytime</h1>
+                    <p>Access expert-led courses and track your real progress. Start your personalized learning journey today!</p>
+                    <div class="hero-actions">
+                        <button class="btn btn--primary btn--lg" id="browse-courses-btn">Browse Courses</button>
+                        <button class="btn btn--secondary btn--lg" id="export-progress-btn">Export Progress</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Dashboard -->
+            <div class="section-content">
+                <div class="dashboard-stats" id="dashboard-stats">
+                    <!-- Stats will be loaded here -->
+                </div>
+
+                <!-- Categories Grid -->
+                <h2>Explore Categories</h2>
+                <div class="categories-grid" id="categories-grid">
+                    <!-- Categories will be loaded here -->
+                </div>
+
+                <!-- Featured Courses -->
+                <h2>Featured Courses</h2>
+                <div class="courses-grid" id="featured-courses">
+                    <!-- Featured courses will be loaded here -->
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="recent-activity" id="recent-activity-section">
+                    <h2>Recent Activity</h2>
+                    <div class="activity-feed" id="activity-feed">
+                        <!-- Recent activity will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Achievement Notifications -->
+                <div class="achievement-notifications" id="achievement-notifications">
+                    <!-- Achievement notifications will appear here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Courses Section -->
+        <section id="courses" class="section">
+            <div class="section-content">
+                <div class="section-header">
+                    <h2>All Courses</h2>
+                    <div class="course-filters">
+                        <select id="category-filter" class="form-control">
+                            <option value="all">All Categories</option>
+                        </select>
+                        <select id="difficulty-filter" class="form-control">
+                            <option value="all">All Levels</option>
+                            <option value="Beginner">Beginner</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="Advanced">Advanced</option>
+                        </select>
+                        <input type="text" id="search-courses" class="form-control" placeholder="Search courses...">
+                    </div>
+                </div>
+                <div class="courses-grid" id="all-courses">
+                    <!-- All courses will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Course Detail Section -->
+        <section id="course-detail" class="section">
+            <div class="course-detail-container">
+                <div class="course-sidebar">
+                    <button class="btn btn--secondary" id="back-to-courses">← Back to Courses</button>
+                    <div class="enrollment-status" id="enrollment-status">
+                        <!-- Enrollment status will be shown here -->
+                    </div>
+                    <div class="course-info" id="course-info">
+                        <!-- Course info will be loaded here -->
+                    </div>
+                    <div class="lesson-list" id="lesson-list">
+                        <!-- Lesson list will be loaded here -->
+                    </div>
+                </div>
+                <div class="course-content">
+                    <div class="video-player-container">
+                        <div class="video-player" id="video-player">
+                            <div class="video-placeholder">
+                                <div class="play-button" id="play-button">▶</div>
+                                <div class="video-title" id="video-title">Select a lesson to start</div>
+                                <div class="video-duration" id="video-duration"></div>
+                            </div>
+                            <div class="video-controls hidden" id="video-controls">
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" id="video-progress-bar">
+                                        <div class="progress-fill" id="video-progress-fill"></div>
+                                    </div>
+                                </div>
+                                <div class="controls-row">
+                                    <button class="control-btn" id="play-pause-btn">⏸</button>
+                                    <span class="time-display" id="time-display">0:00 / 0:00</span>
+                                    <select class="speed-control" id="speed-control">
+                                        <option value="0.5">0.5x</option>
+                                        <option value="1" selected>1x</option>
+                                        <option value="1.25">1.25x</option>
+                                        <option value="1.5">1.5x</option>
+                                        <option value="2">2x</option>
+                                    </select>
+                                    <button class="control-btn" id="fullscreen-btn">⛶</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lesson-tabs">
+                        <button class="tab-btn active" data-tab="notes">Notes</button>
+                        <button class="tab-btn" data-tab="resources">Resources</button>
+                        <button class="tab-btn admin-only hidden" data-tab="admin">Edit Content</button>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="notes-tab">
+                            <textarea class="form-control" id="lesson-notes" placeholder="Take notes for this lesson..." rows="8"></textarea>
+                            <button class="btn btn--primary" id="save-notes">Save Notes</button>
+                        </div>
+                        <div class="tab-pane" id="resources-tab">
+                            <div class="resources-content" id="resources-content">
+                                <!-- Resources will be loaded here -->
+                            </div>
+                        </div>
+                        <div class="tab-pane admin-only" id="admin-tab">
+                            <div class="content-editor">
+                                <h4>Edit Lesson Content</h4>
+                                <div class="form-group">
+                                    <label class="form-label">Lesson Title</label>
+                                    <input type="text" class="form-control" id="edit-lesson-title">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Description</label>
+                                    <textarea class="form-control" id="edit-lesson-description" rows="4"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Resources (one per line)</label>
+                                    <textarea class="form-control" id="edit-lesson-resources" rows="3"></textarea>
+                                </div>
+                                <button class="btn btn--primary" id="save-lesson-changes">Save Changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quizzes Section -->
+        <section id="quizzes" class="section">
+            <div class="section-content">
+                <div class="section-header">
+                    <h2>Available Quizzes</h2>
+                    <div class="quiz-filters">
+                        <select id="quiz-course-filter" class="form-control">
+                            <option value="all">All Courses</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="quizzes-grid" id="quizzes-grid">
+                    <!-- Quizzes will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Taking Section -->
+        <section id="quiz-taking" class="section">
+            <div class="quiz-container">
+                <div class="quiz-header">
+                    <button class="btn btn--secondary" id="back-to-quizzes">← Back to Quizzes</button>
+                    <div class="quiz-info">
+                        <h2 id="quiz-title">Quiz Title</h2>
+                        <div class="quiz-meta">
+                            <div class="quiz-timer" id="quiz-timer">Time: 5:00</div>
+                            <div class="quiz-attempts" id="quiz-attempts">Attempt 1 of 3</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="quiz-content">
+                    <div class="quiz-progress">
+                        <div class="progress-text" id="question-progress">Question 1 of 5</div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="quiz-progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question-container" id="question-container">
+                        <!-- Question will be loaded here -->
+                    </div>
+                    <div class="quiz-navigation">
+                        <button class="btn btn--secondary" id="prev-question" disabled>Previous</button>
+                        <button class="btn btn--primary" id="next-question">Next</button>
+                        <button class="btn btn--primary hidden" id="submit-quiz">Submit Quiz</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Results Section -->
+        <section id="quiz-results" class="section">
+            <div class="results-container">
+                <div class="results-header">
+                    <h2>Quiz Results</h2>
+                    <div class="score-display" id="score-display">
+                        <div class="score-circle">
+                            <div class="score-value" id="final-score">85%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="results-summary" id="results-summary">
+                    <!-- Results summary will be shown here -->
+                </div>
+                <div class="results-content" id="results-content">
+                    <!-- Detailed results will be loaded here -->
+                </div>
+                <div class="results-actions">
+                    <button class="btn btn--primary" id="retake-quiz">Retake Quiz</button>
+                    <button class="btn btn--secondary" id="back-to-course">Back to Course</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Section -->
+        <section id="progress" class="section">
+            <div class="section-content">
+                <h2>Your Learning Progress</h2>
+                <div class="progress-overview">
+                    <div class="progress-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">📚</div>
+                            <div class="stat-details">
+                                <div class="stat-number" id="enrolled-count">0</div>
+                                <div class="stat-label">Enrolled Courses</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">✅</div>
+                            <div class="stat-details">
+                                <div class="stat-number" id="completed-count">0</div>
+                                <div class="stat-label">Completed Courses</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🎯</div>
+                            <div class="stat-details">
+                                <div class="stat-number" id="lessons-completed-count">0</div>
+                                <div class="stat-label">Lessons Completed</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">⏱</div>
+                            <div class="stat-details">
+                                <div class="stat-number" id="watch-time">0h</div>
+                                <div class="stat-label">Watch Time</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🔥</div>
+                            <div class="stat-details">
+                                <div class="stat-number" id="streak-count">0</div>
+                                <div class="stat-label">Day Streak</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">⭐</div>
+                            <div class="stat-details">
+                                <div class="stat-number" id="total-points">0</div>
+                                <div class="stat-label">Total Points</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="enrolled-courses">
+                    <h3>Your Enrolled Courses</h3>
+                    <div class="progress-courses" id="progress-courses">
+                        <!-- Progress courses will be loaded here -->
+                    </div>
+                </div>
+                <div class="achievements">
+                    <h3>Achievements</h3>
+                    <div class="achievements-grid" id="achievements-grid">
+                        <!-- Achievements will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profile" class="section">
+            <div class="section-content">
+                <h2>Profile Settings</h2>
+                <div class="profile-content">
+                    <div class="profile-info">
+                        <div class="profile-avatar">👤</div>
+                        <div class="profile-details">
+                            <h3 id="profile-user-name">Student</h3>
+                            <p id="profile-user-email">student@edulearn.com</p>
+                            <div class="profile-stats">
+                                <div class="profile-stat">
+                                    <span class="profile-stat-label">Member Since:</span>
+                                    <span id="member-since">Today</span>
+                                </div>
+                                <div class="profile-stat">
+                                    <span class="profile-stat-label">Last Active:</span>
+                                    <span id="last-active">Just now</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-form">
+                        <form id="profile-form">
+                            <div class="form-group">
+                                <label class="form-label">Display Name</label>
+                                <input type="text" class="form-control" id="display-name">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Learning Goals</label>
+                                <textarea class="form-control" id="learning-goals" rows="4" placeholder="What do you want to achieve?"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-checkbox">
+                                    <input type="checkbox" id="notifications-enabled">
+                                    <label for="notifications-enabled">Enable notifications</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-checkbox">
+                                    <input type="checkbox" id="autoplay-enabled">
+                                    <label for="autoplay-enabled">Autoplay next lesson</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn--primary">Save Changes</button>
+                            <button type="button" class="btn btn--secondary" id="reset-all-data">Reset All Data</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Section -->
+        <section id="admin" class="section admin-only">
+            <div class="section-content">
+                <h2>Course Administration</h2>
+                
+                <div class="admin-tabs">
+                    <button class="tab-btn active" data-tab="student-analytics">Student Analytics</button>
+                    <button class="tab-btn" data-tab="course-management">Course Management</button>
+                    <button class="tab-btn" data-tab="content-editor">Content Editor</button>
+                </div>
+
+                <div class="admin-content">
+                    <div class="tab-pane active" id="student-analytics-tab">
+                        <div class="analytics-cards">
+                            <div class="analytics-card">
+                                <h4>Total Students</h4>
+                                <div class="analytics-number" id="total-students">1</div>
+                            </div>
+                            <div class="analytics-card">
+                                <h4>Course Completions</h4>
+                                <div class="analytics-number" id="total-completions">0</div>
+                            </div>
+                            <div class="analytics-card">
+                                <h4>Average Score</h4>
+                                <div class="analytics-number" id="average-score">-</div>
+                            </div>
+                        </div>
+                        <div class="student-progress-table" id="student-progress-table">
+                            <!-- Student progress data will be shown here -->
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="course-management-tab">
+                        <div class="course-management">
+                            <button class="btn btn--primary" id="create-new-course">Create New Course</button>
+                            <div class="course-list" id="admin-course-list">
+                                <!-- Admin course list will be shown here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="content-editor-tab">
+                        <div class="content-editor-panel">
+                            <h4>Global Content Updates</h4>
+                            <p>Select a course to edit its content, add new lessons, or modify quizzes.</p>
+                            <div class="course-selector">
+                                <select class="form-control" id="admin-course-selector">
+                                    <option value="">Select a course to edit...</option>
+                                </select>
+                            </div>
+                            <div class="selected-course-editor" id="selected-course-editor">
+                                <!-- Course editing interface will appear here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Course Enrollment Modal -->
+    <div class="modal hidden" id="enrollment-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Enroll in Course</h3>
+                <button class="modal-close" id="close-enrollment-modal">×</button>
+            </div>
+            <div class="modal-body" id="enrollment-modal-body">
+                <!-- Course details will be shown here -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn--secondary" id="cancel-enrollment">Cancel</button>
+                <button class="btn btn--primary" id="confirm-enrollment">Enroll Now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Achievement Notification -->
+    <div class="achievement-popup hidden" id="achievement-popup">
+        <div class="achievement-popup-content">
+            <div class="achievement-popup-icon" id="achievement-popup-icon">🏆</div>
+            <div class="achievement-popup-text">
+                <div class="achievement-popup-title" id="achievement-popup-title">Achievement Unlocked!</div>
+                <div class="achievement-popup-description" id="achievement-popup-description">You've earned a new achievement</div>
+            </div>
+            <button class="achievement-popup-close" id="close-achievement-popup">×</button>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay hidden" id="loading-overlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Loading...</div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
